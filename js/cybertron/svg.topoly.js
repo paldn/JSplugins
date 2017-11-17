@@ -12,7 +12,10 @@
 	Topoly.Stage = function(id)
 	{
 		this.id = id;
-		this.stage = SVG(id).size("100%","100%").viewbox({ x: 0, y: 0, width: 2000, height: 2000 }).panZoom({zoomMin: 0.1, zoomMax: 20});
+		bound = document.getElementById(id).getBoundingClientRect();
+		var width = bound.width;
+		var height = bound.height;
+		this.stage = SVG(id).size("100%","100%").viewbox({ x: 0, y: 0, width: width*2, height: height*2 }).panZoom({zoomMin: 0.1, zoomMax: 20});
 		
 		
 		this.stage.gradient('radial',function(stop)
@@ -77,6 +80,7 @@
 		this.node.attr({"opacity":"0"});
 		this.bind("mousemove",function(e)
 		{
+			var bound = document.getElementById(this.element.id).getBoundingClientRect();
 			var matrix = this.element.container.matrixify();
 			var viewbox = this.viewbox();
 			var pLine = this.element.line;
@@ -84,7 +88,7 @@
 			var sctm = this.screenCTM();
 			if(pLine != null)
 			{
-				pNode.node.x(e.clientX/viewbox.zoom-pNode.width/2 - sctm.e/sctm.a - matrix.e).y(e.clientY/viewbox.zoom + viewbox.y - pNode.height/2 - matrix.f);
+				pNode.node.x(e.clientX/viewbox.zoom-pNode.width/2 - sctm.e/sctm.a - matrix.e).y((e.clientY-bound.top)/viewbox.zoom + viewbox.y - pNode.height/2 - matrix.f);
 				var matrixA = pLine.nodeA.node.matrixify();
 				var ax = matrixA.e;
 				var ay = matrixA.f;
@@ -92,7 +96,7 @@
 				var matrixB = pLine.nodeB.node.matrixify();
 				var bx = matrixB.e;
 				var by = matrixB.f;
-				
+				pLine.node.attr({"opacity":"1"});
 				if(pLine.lineType == 1)
 				{
 					pLine.node.plot(
@@ -575,6 +579,7 @@
 			}
 			
 			stage.add(stage.line);
+			stage.line.node.attr({"opacity":"0"});
 		}
 		else
 		{
