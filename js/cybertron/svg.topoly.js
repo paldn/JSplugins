@@ -45,6 +45,9 @@
 		this.lines = this.container.group();
 		this.scene = this.container.group();
 		this.stage.events = {};
+		
+		this.allnodes = {};
+		this.alllines = {};
 	};
 	Topoly.Stage.prototype.init = function()
 	{
@@ -54,7 +57,7 @@
 		this.lineWidth = 5;
 		this.lineColor = "#3c6";
 		
-		this.node = new Topoly.Node("1000000","",160,160,0,0,"",true);
+		this.node = new Topoly.Node("QWWERRDDFGGHJGUUGHJHFDGHJUUIGHGJJGHFHJGYTSDDT","",160,160,0,0,"",true);
 		this.node.element = this;
 		this.node.bind("dblclick",function(e)
 		{
@@ -63,6 +66,7 @@
 			if(pLine!=null)
 			{
 				pLine.node.remove();
+				delete this.context.element.alllines[pLine.node.attr("id")];
 				var tagNode = pLine.nodeA==this.element?pLine.nodeB:pLine.nodeA;
 				for(var i=0;i<tagNode.lines.length;++i)
 				{
@@ -206,7 +210,39 @@
 				}
 			}
 		});
+		this.stage.on("mousedown",function(e)
+		{
+			for(var v=0;v<this.element.lines.children().length;++v)
+			{
+				this.element.lines.children()[v].context.selected = false;
+				this.element.lines.children()[v].attr({"stroke":"#3c6"});
+			}
+			for(var v=0;v<this.element.scene.children().length;++v)
+			{
+				this.element.scene.children()[v].context.selected = false;
+				this.element.scene.children()[v].children()[2].children()[0].attr({"opacity":"0"});
+			}
+		});
 		return this;
+	};
+	Topoly.Stage.prototype.getSelected = function()
+	{
+		var obj = {nodes:[],lines:[]};
+		for(var v in this.alllines)
+		{
+			if(this.alllines[v].selected)
+			{
+				obj.lines.push(this.alllines[v]);
+			}
+		}
+		for(var v in this.allnodes)
+		{
+			if(this.allnodes[v].selected)
+			{
+				obj.nodes.push(this.allnodes[v]);
+			}
+		}
+		return obj;
 	};
 	Topoly.Stage.prototype.setLineType = function(typeName)
 	{
@@ -265,14 +301,21 @@
 	{
 		if(element.type == "node")
 		{
+			if(this.allnodes[element.id])
+			{
+				alert("ID冲突！");
+				return false;
+			}
 			var box = this.scene.group().attr({"id":element.id}).x(element.left).y(element.top);
 			var background = box.group();
 			var image = background.image(element.image,element.width,element.height);
 			var foreground = box.group().x(element.width/2).y(element.height/2);
+			var select_box = box.group();
+			var select_rect = select_box.rect(element.width+20,element.height+20).x(-10).y(-10).attr({"fill":"#396","opacity":"0"});
 			var status_1 = foreground.circle().radius(0).fill("none");
 			var status_2 = foreground.circle().radius(0).fill("none");
 			var fieldbox = box.group().x(element.width/2).y(element.height);
-			var text = fieldbox.text(element.name).attr({"text-anchor":"middle","font-size":"18px"});
+			var text = fieldbox.text(element.name).attr({"text-anchor":"middle","font-size":"24px"});
 			if(element.draggable)
 			{
 				box.draggable().on("dragmove",function(e)
@@ -403,13 +446,48 @@
 					{
 						this.context.events["dblclick"].call(this,e);
 					}
+				}).on("contextmenu",function(e)
+				{
+					if(this.context.events["contextmenu"])
+					{
+						this.context.events["contextmenu"].call(this,e);
+					}
+				}).on("mousedown",function(e)
+				{
+					if(this.context.id == "QWWERRDDFGGHJGUUGHJHFDGHJUUIGHGJJGHFHJGYTSDDT")return false;
+					if(!e.ctrlKey)
+					{
+						var nodes = this.siblings();
+						for(var v=0;v<nodes.length;++v)
+						{
+							nodes[v].context.selected = false;
+							nodes[v].children()[2].children()[0].attr({"opacity":"0"});
+						}
+						
+						var lines = this.parent().previous().children();
+						for(var v=0;v<lines.length;++v)
+						{
+							lines[v].context.selected = false;
+							lines[v].attr({"stroke":"#3c6"});
+						}
+					}
+					this.context.selected = true;
+					this.children()[2].children()[0].attr({"opacity":"0.3"});
+					e.stopPropagation();
 				});
 			}
 			box.context = element;
 			element.node = box;
+			this.allnodes[element.id] = element;
 		}
 		if(element.type == "line")
 		{
+			var existLine = this.alllines[element.nodeA.id+"_"+element.nodeB.id]||this.alllines[element.nodeB.id+"_"+element.nodeA.id];
+			if(existLine)
+			{
+				alert("该连接已存在！");
+				return false;
+			}
 			var matrixA = element.nodeA.node.matrixify();
 			var ax = matrixA.e;
 			var ay = matrixA.f;
@@ -498,7 +576,32 @@
 					).fill("none").stroke({ width: 5 ,color:'#3c6'});
 				}
 			}
+			line.attr({"cursor":"pointer"});
+			line.on("mousedown",function(e)
+			{
+				if(!e.ctrlKey)
+				{
+					var lines = this.siblings();
+					for(var v=0;v<lines.length;++v)
+					{
+						lines[v].context.selected = false;
+						lines[v].attr({"stroke":"#3c6"});
+					}
+					
+					var nodes = this.parent().next().children();
+					for(var v=0;v<nodes.length;++v)
+					{
+						nodes[v].context.selected = false;
+						nodes[v].children()[2].children()[0].attr({"opacity":"0"});
+					}
+				}
+				this.context.selected = true;
+				this.attr({"stroke":"#666"});
+				e.stopPropagation();
+			});
+			
 			line.attr({"id":element.nodeA.id+"_"+element.nodeB.id});
+			this.alllines[element.nodeA.id+"_"+element.nodeB.id] = element;
 			line.context = element;
 			element.node = line;
 			line.context.nodeA.lines.push(element);
@@ -509,6 +612,7 @@
 	{
 		if(element.type == "node")
 		{
+			if(element.id == "QWWERRDDFGGHJGUUGHJHFDGHJUUIGHGJJGHFHJGYTSDDT")return true;
 			for(var i=0;i<element.lines.length;++i)
 			{
 				var tagNode = element===element.lines[i].nodeA?element.lines[i].nodeB:element.lines[i].nodeA;
@@ -521,7 +625,9 @@
 					}
 				}
 				element.lines[i].node.remove();
+				delete this.alllines[element.lines[i].node.attr("id")];
 			}
+			delete this.allnodes[element.id+""];
 		}
 		else
 		{
@@ -543,6 +649,7 @@
 					break;
 				}
 			}
+			delete this.alllines[element.node.attr("id")];
 		}
 		element.node.remove();
 	};
@@ -559,6 +666,7 @@
 		this.type = "node";
 		this.lines = [];
 		this.events = {};
+		this.selected = false;
 	};
 	Topoly.Node.prototype.copulation = function()
 	{
@@ -578,7 +686,7 @@
 				stage.line = new Topoly.SecondaryPolyline(stage.node,this,stage.lineDirection);
 			}
 			
-			stage.add(stage.line);
+			stage.add(stage.line,false);
 			stage.line.node.attr({"opacity":"0"});
 		}
 		else
@@ -587,6 +695,7 @@
 			{
 				var lineType = stage.line.lineType;
 				stage.line.node.remove();
+				delete stage.alllines[stage.line.node.attr("id")];
 				var nodeA = stage.line.nodeA===stage.node?stage.line.nodeB:stage.line.nodeA;
 				var nodeB = this;
 				for(var i=0;i<nodeA.lines.length;++i)
