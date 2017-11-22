@@ -1,0 +1,137 @@
+@charset "utf-8";
+/* CSS Document */
+html,body{width:100%;margin:0;border:0;padding:0;min-width:1280px;font-family:微软雅黑;}
+
+.disable_select
+{
+	moz-user-select: -moz-none;
+	-moz-user-select: none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+img{display:block;}
+a{text-decoration:none;}
+input:focus{outline:none;}
+.gradient{
+    background: -moz-linear-gradient(top, #e5e5e5 0%, #dddddd 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e5e5e5), color-stop(100%,#dddddd));
+    background: -webkit-linear-gradient(top, #e5e5e5 0%,#dddddd 100%);
+    background: -o-linear-gradient(top, #e5e5e5 0%,#dddddd 100%);
+    background: -ms-linear-gradient(top, #e5e5e5 0%,#dddddd 100%);
+    background: linear-gradient(to bottom, #e5e5e5 0%,#dddddd 100%);
+}
+
+header{width:100%;height:50px;box-shadow:0 0 3px #999;text-align:center;position:relative;z-index:111;}
+header a{display:block;height:100%;width:100%;cursor:pointer;font-size:14px;}
+header nav ul{list-style:none;margin:0;padding:0;}
+header nav ul > li{height:50px;overflow:hidden;float:left;}
+header nav > ul > li:hover{overflow:visible !important;}
+header nav ul > li.main{width:258px;}
+header nav ul > li.main > a{background:#0083ce url(../../images/cybertron/cyber-logo.png) center no-repeat;}
+
+header nav ul > li.main > div{width:100%;display:table;line-height:50px;background:rgba(0,0,0,0.8);text-align:left;}
+header nav ul > li.main > div ul{width:100%;display:table;}
+header nav ul > li.main > div > ul > li{width:100%;position:relative;border-bottom:1px solid #000;}
+header nav ul > li.main > div > ul > li a{text-Indent:45px;}
+header nav ul > li.main > div > ul > li > a{width:190px;padding:0 34px;position:relative;}
+header nav ul > li.main > div > ul > li.cmain > a{background: url(../../images/cybertron/list_home01.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.cmain > a:hover{background:rgba(0,0,0,0.9) url(../../images/cybertron/list_home02.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.cview > a{background:url(../../images/cybertron/list_view01.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.cview > a:hover{background:rgba(0,0,0,0.9) url(../../images/cybertron/list_view02.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.cevent > a{background:url(../../images/cybertron/list_alarm01.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.cevent > a:hover{background:rgba(0,0,0,0.9) url(../../images/cybertron/list_alarm02.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.corder > a{background:url(../../images/cybertron/list_order01.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.corder > a:hover{background:rgba(0,0,0,0.9) url(../../images/cybertron/list_order02.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.csetting > a{background:url(../../images/cybertron/list_set01.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.csetting > a:hover{background:rgba(0,0,0,0.9) url(../../images/cybertron/list_set02.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.creport > a{background:url(../../images/cybertron/list_report01.png) 34px center no-repeat;}
+header nav ul > li.main > div > ul > li.creport > a:hover{background:rgba(0,0,0,0.9) url(../../images/cybertron/list_report02.png) 34px center no-repeat;}
+header nav ul > li.main > div li li{width:190px;padding:0 34px;}
+
+
+header nav ul > li.main > div > ul > li div{height:50px;width:100%;overflow:hidden;}
+header nav ul > li.main > div > ul > li.active{display:table;}
+header nav ul > li.main > div > ul > li.active div{display:table;}
+header nav ul > li.main > div > ul > li.active div > ul{display:table;}
+
+header nav ul > li.main > div a{display:block;width:100%;height:50px;color:#acaba7;}
+header nav ul > li.main > div > ul > li > a:hover{color:#0083ce;}
+header nav ul > li.main > div > ul > li li:hover{background:rgba(0,0,0,0.9);}
+header nav ul > li.main > div > ul > li > div > ul > li{border-top:1px solid #444;}
+
+
+header nav ul > li.home,header nav ul > li.alarm,header nav ul > li.view{width:50px;border-right:1px solid #ccc;}
+header nav ul > li.home > a{background:url(../../images/cybertron/nav_home01.png) center no-repeat;}
+header nav ul > li.home > a:hover{background:#6fb3e0 url(../../images/cybertron/nav_home02.png) center no-repeat;}
+header nav ul > li.alarm > a{background:url(../../images/cybertron/nav_all01.png) center no-repeat;position:relative;}
+header nav ul > li.alarm > a i{display:block;font-style:normal;position:absolute;width:30px;border-radius:8px;text-align:center;font-size:12px;left:19px;top:4px;background:#e60012;color:#eee;}
+header nav ul > li.alarm > a:hover{background:#6fb3e0 url(../../images/cybertron/nav_all02.png) center no-repeat;}
+header nav ul > li.view > a{background:url(../../images/cybertron/nav_view01.png) center no-repeat;}
+header nav ul > li.view > a:hover{background:#6fb3e0 url(../../images/cybertron/nav_view02.png) center no-repeat;}
+header nav ul > li.system{width:136px;}
+header nav ul > li.system > a{color:#666;line-height:50px;}
+header nav ul > li.system > a i{display:inline-block;width:15px;height:6px;background:url(../../images/cybertron/nav_down01.png) right center no-repeat;}
+header nav ul > li.system > a:hover{color:#0083ce;}
+header nav ul > li.system > a:hover i{background:url(../../images/cybertron/nav_down02.png) right center no-repeat;}
+header nav ul > li.system div{width:408px;display:table;margin-left:-136px;background:#e5e5e5;border-top:1px solid #e5e5e5;}
+header nav ul > li.system div ul{width:408px;display:table;}
+header nav ul > li.system div li{width:136px;height:50px;line-height:50px;background:#e5e5e5;}
+header nav ul > li.system div li a{display:block;width:100%;height:100%;color:#666;}
+header nav ul > li.system div li a:hover{background:#0083ce;color:#eee;}
+
+header nav ul > li.view div{width:408px;display:table;margin-left:-161px;border-top:1px solid #e5e5e5;}
+header nav ul > li.view div ul{width:408px;display:table;}
+header nav ul > li.view div li{width:136px;height:50px;line-height:50px;background:#e5e5e5;}
+header nav ul > li.view div li a{display:block;width:100%;height:100%;color:#666;}
+header nav ul > li.view div li a:hover{background:#0083ce;color:#eee;}
+
+header nav ul > li.user{float:right !important;color:#666;}
+header nav ul > li.user > a{color:#0083ce;display:table-cell !important;font-weight:bold;padding:0 10px;line-height:50px;}
+header nav ul > li.user > a i{display:inline-block;width:18px;height:20px;padding-right:8px;background:url(../../images/cybertron/nav_admin.png) left center no-repeat;}
+header nav ul > li.user > a i,header nav ul > li.user > a span{vertical-align:middle;}
+
+header nav ul > li.more{float:right !important;width:50px;}
+header nav ul > li.more > a{background:rgba(0,0,0,0) url(../../images/cybertron/nav_set.png) center no-repeat;}
+
+header nav ul > li.more > div{width:114px;display:none;line-height:34px;margin-left:-67px;font-size:14px;position:relative;}
+header nav ul > li.more:hover > div{display:table;}
+header nav ul > li.more > div:before
+{
+	content:"";
+	display:block;
+	width:16px;
+	height:16px;
+	border:1px solid #ccc;
+	border-right:none;
+	border-bottom:none;
+	background:#fff;
+	position:absolute;
+	top:-8px;
+	left:83px;
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(45deg);
+	z-index:1;
+}
+header nav ul > li.more > div ul{width:100%;display:table;background:#fff;border-radius:4px;border:1px solid #ccc;position:relative;}
+header nav ul > li.more > div ul li{width:100%;height:34px;}
+header nav ul > li.more > div ul li a{display:block;width:100%;height:100%;cursor:pointer;color:#666;}
+header nav ul > li.more > div ul li a:hover{background:#f6f5f5;color:#0083ce;}
+header nav ul > li.more > div ul li:not(:last-child){border-bottom:1px solid #ccc;}
+
+.outer {height: 100%; overflow: hidden; position: relative;width: 100%;}
+.outer[class] {display: table; position: static;}
+.middle {position: absolute; top: 50%;text-align:center;} /* for explorer only*/
+.middle[class] {display: table-cell; vertical-align: middle; position: static;}
+.inner {position: relative; top: -50%;width:100%;margin: 0 auto;}/*for explorer only */
+
+.dataTables_length{display:none !important;}
+.dataTables_filter{display:none !important;}
+
+.overflow_text{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}

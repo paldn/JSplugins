@@ -1,0 +1,37 @@
+[
+	{
+		"clazz":"1",
+		"id":31464,
+		"portId":"31464",
+		"serviceNameCn":"Port_01",
+		"serviceNameEn":"Port_01"
+	},
+	{
+		"clazz":"1",
+		"id":31465,
+		"portId":"31465",
+		"serviceNameCn":"Port_02",
+		"serviceNameEn":"Port_02"
+	},
+	{
+		"clazz":"1",
+		"id":31466,
+		"portId":"31466",
+		"serviceNameCn":"Port_03",
+		"serviceNameEn":"Port_03"
+	},
+	{
+		"clazz":"1",
+		"id":31467,
+		"portId":"31467",
+		"serviceNameCn":"Port_04",
+		"serviceNameEn":"Port_04"
+	},
+	{
+		"clazz":"1",
+		"id":31468,
+		"portId":"31468",
+		"serviceNameCn":"Port_05",
+		"serviceNameEn":"Port_05"
+	}
+]

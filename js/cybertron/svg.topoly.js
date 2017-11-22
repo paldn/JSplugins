@@ -79,6 +79,10 @@
 				this.context.element.node.lines = [];
 				this.context.element.line = null;
 			}
+			if(this.context.element.cancel)
+			{
+				this.context.element.cancel.call(this.context.element);
+			}
 		});
 		this.add(this.node);
 		this.node.attr({"opacity":"0"});
@@ -304,7 +308,7 @@
 			if(this.allnodes[element.id])
 			{
 				alert("ID冲突！");
-				return false;
+				return -1;
 			}
 			var box = this.scene.group().attr({"id":element.id}).x(element.left).y(element.top);
 			var background = box.group();
@@ -479,6 +483,7 @@
 			box.context = element;
 			element.node = box;
 			this.allnodes[element.id] = element;
+			return 1;
 		}
 		if(element.type == "line")
 		{
@@ -486,7 +491,7 @@
 			if(existLine)
 			{
 				alert("该连接已存在！");
-				return false;
+				return -1;
 			}
 			var matrixA = element.nodeA.node.matrixify();
 			var ax = matrixA.e;
@@ -606,6 +611,7 @@
 			element.node = line;
 			line.context.nodeA.lines.push(element);
 			line.context.nodeB.lines.push(element);
+			return 1;
 		}
 	};
 	Topoly.Stage.prototype.remove = function(element)
@@ -688,6 +694,7 @@
 			
 			stage.add(stage.line,false);
 			stage.line.node.attr({"opacity":"0"});
+			return {status:0};
 		}
 		else
 		{
@@ -730,10 +737,14 @@
 				{
 					line = new Topoly.SecondaryPolyline(nodeA,nodeB,"vertical");
 				}
-				
-				stage.add(line);
+				if(stage.add(line) == -1)
+				{
+					return {status:-1};
+				}
+				return {status:1,nodes:[nodeA,nodeB]};
 			}
 		}
+		return {status:-1};
 	};
 	Topoly.Node.prototype.alarming = function(level)
 	{

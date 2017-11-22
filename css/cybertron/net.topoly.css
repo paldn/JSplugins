@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+html{width:100%;height:100%;}
+body
+{
+	background:#fff;
+	min-width:1280px;
+	margin:0;
+	-webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    min-width:1280px;
+	width:100%;
+	height:100%;
+    overflow-y:hidden;
+    overflow-x:auto;
+	position:relative;	
+}
+section.position{position:relative;z-index:99;}
+section.position .path{padding:0 20px;height:44px;line-height:44px;background:#f6f5f5;}
+section.position .path > label{font-size:16px;color:#666;display:inline-block;height:100%;margin-left:26px;padding-left:14px;text-Indent:2px;background:url(/images/cybertron/list_set03.png) 0 16px no-repeat;background-size:14px;}
+section.position .path > label a{color:#666;}
+section.position .path > label a:hover{color:#145bcc;}
+section.context{padding-top:94px;position:absolute;left:0;top:0;width:100%;height:100%;}
+section.context .container{width:100%;height:100%;position:relative;}
+section.context .container .stage{float:left;width:100%;height:100%;}
+section.context .container .stage > div
+{
+	margin:20px 443px 20px 20px;
+	height:calc(100% - 134px);
+	-moz-height:calc(100% - 134px);
+	-webkit-height:calc(100% - 134px);
+	border:1px solid #ccc;
+	border-radius:3px;
+	position:relative;
+	overflow:hidden;
+}
+
+
+section.context .container .stage > div > div{width:3840px;height:2160px;}
+section.context .container .stage > div .menu{width:150px;height:30px;position:absolute;left:50%;top:10px;margin-left:-75px;box-shadow:0 0 3px #333;}
+section.context .container .stage > div .menu ul{list-style:none;padding:0;margin:0;}
+section.context .container .stage > div .menu ul li{float:left;}
+section.context .container .stage > div .menu ul li a{display:block;width:30px;height:30px;cursor:pointer;}
+section.context .container .stage > div .menu ul li.normal a{background:url(../../images/cybertron/line11.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.brokenpoly-v a{background:url(../../images/cybertron/line13.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.brokenpoly-h a{background:url(../../images/cybertron/line12.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.secondarypoly-v a{background:url(../../images/cybertron/line14.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.secondarypoly-h a{background:url(../../images/cybertron/line15.png) center no-repeat;background-size:20px;}
+
+section.context .container .stage > div .menu ul li.normal a.selected{background:#666 url(../../images/cybertron/line01.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.brokenpoly-v a.selected{background:#666 url(../../images/cybertron/line03.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.brokenpoly-h a.selected{background:#666 url(../../images/cybertron/line02.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.secondarypoly-v a.selected{background:#666 url(../../images/cybertron/line04.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.secondarypoly-h a.selected{background:#666 url(../../images/cybertron/line05.png) center no-repeat;background-size:20px;}
+
+
+section.context .container .stage > div .menu ul li.normal:hover a{background:#666 url(../../images/cybertron/line01.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.brokenpoly-v:hover a{background:#666 url(../../images/cybertron/line03.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.brokenpoly-h:hover a{background:#666 url(../../images/cybertron/line02.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.secondarypoly-v:hover a{background:#666 url(../../images/cybertron/line04.png) center no-repeat;background-size:20px;}
+section.context .container .stage > div .menu ul li.secondarypoly-h:hover a{background:#666 url(../../images/cybertron/line05.png) center no-repeat;background-size:20px;}
+
+section.context .container .stage > div .port-list{position:absolute;left:300px;top:300px;width:170px;height:auto;text-align:center;line-height:26px;border:1px solid #ccc;border-radius:2px;font-size:12px;}
+section.context .container .stage > div .port-list ul{list-style:none;padding:0;margin:0;}
+section.context .container .stage > div .port-list ul li{height:26px;width:170px;background:#fff;}
+section.context .container .stage > div .port-list ul li a{display:block;width:160px;height:26px;padding:0 5px;color:#444;cursor:pointer;}
+section.context .container .stage > div .port-list ul li a:hover{background:#0083ce;color:#eee;}
+section.context .container .stage > div .port-list > div:nth-of-type(1) ul li.disabled a{color:#999;background:#fff !important;}
+section.context .container .stage > div .port-list > div:nth-of-type(2) ul li.disabled{display:none;}
+section.context .container .stage > div .port-list > div:nth-of-type(1){display:table;width:170px;}
+section.context .container .stage > div .port-list > div:nth-of-type(2){height:26px;width:170px;overflow:hidden;}
+
+
+
+
+
+section.context .container .box{position:relative;float:right;width:443px;height:100%;margin-left:-443px;z-index:99;}
+
+section.context .container .box > div
+{
+	width:403px;
+	margin:20px ;
+	height:calc(100% - 134px);
+	-moz-height:calc(100% - 134px);
+	-webkit-height:calc(100% - 134px);
+	border:1px solid #ccc;
+	border-radius:3px;
+	position:relative;
+}
+section.context .container .box > div .row{width:374px;height:30px;margin:10px auto;position:relative;}
+section.context .container .box > div .t3{height:calc(100% - 104px);-moz-height:calc(100% - 104px);-webkit-height:calc(100% - 104px);overflow:auto;}
+section.context .container .box > div .row input[type=text]
+{
+	border:1px solid #ccc;
+	height:28px;
+	width:372px;
+	text-Indent:5px;
+	margin:0;
+	padding:0;
+}
+section.context .container .box > div .row .mutilselect{width:372px;height:28px;border:1px solid #ccc;overflow:hidden;font-size:12px;background:#fff;cursor:pointer;}
+section.context .container .box > div .row .open{display:table;}
+section.context .container .box > div .row .mutilselect > a{display:block;width:342px;height:28px;padding-right:30px;text-align:center;line-height:28px;position:relative;}
+section.context .container .box > div .row .mutilselect > a span{display:inline-block;padding:0 10px;width:322px;}
+section.context .container .box > div .row .mutilselect > a::before
+{
+	content:"";
+	display:block;
+	position:absolute;
+	left:342px;
+	top:0;
+	width:30px;
+	height:28px;
+	background:#0083ce url(/images/cybertron/form_down.png) center no-repeat;
+	background-size:14px;
+}
+
+section.context .container .box > div .row .mutilselect ul{list-style:none;border:0;padding:0;margin:0;width:372px;border-top:1px solid #ccc;background:#f1f1f1;}
+section.context .container .box > div .row .mutilselect ul li{float:left;width:93px;height:28px;line-height:28px;text-align:center;}
+section.context .container .box > div .row .mutilselect ul li a{display:block;width:100%;height:100%;color:#333;}
+section.context .container .box > div .row .mutilselect ul li a:hover{background:#0083ce;color:#eee;}
+section.context .container .box > div .row .mutilselect ul li.selected{background:#0083ce;}
+section.context .container .box > div .row .mutilselect ul li.selected a{color:#eee;}
+
+section.context .container .box > div .row .device_list{width:100%;display:table;text-align:center;}
+section.context .container .box > div .row .device_list > div{display:inline-block;width:62px;height:82px;}
+section.context .container .box > div .row .device_list > div > div{width:62px;height:62px;}
+section.context .container .box > div .row .device_list > div > p{margin:0;padding:0 10px;width:42px;height:20px;line-height:20px;text-align:center;font-size:12px;}
+section.context .container .box > div .row .device_list > div.hidden{display:none;}
+section.context .container .box > div .row .device_list > div.droped{display:none !important;}
+
+body > .device{display:block;width:62px;height:82px;}
+body > .device > div{width:62px;height:62px;}
+body > .device > p{margin:0;padding:0 10px;width:42px;height:20px;line-height:20px;text-align:center;font-size:12px;}
+
+.unactive{display:none !important;}
+
+
+
+
+
