@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>网络拓扑</title>
+<link href="css/cybertron/public.css" type="text/css" rel="stylesheet">
+<link href="css/cybertron/jquery-ui.css" type="text/css" rel="stylesheet">
+<link href="css/cybertron/net.topoly.view.css" type="text/css" rel="stylesheet">
+<script src="js/cybertron/jquery.min.js"></script>
+<script src="js/cybertron/jquery-ui.js"></script>
+<script src="js/cybertron/preloadjs.min.js"></script>
+<script src="js/cybertron/svg.min.js"></script>
+<script src="js/cybertron/svg.draggable.min.js"></script>
+<script src="js/cybertron/svg.panzoom.js"></script>
+<script src="js/cybertron/svg.topoly.js"></script>
+</head>
+<body>
+<header class="gradient">
+	<div class="container">
+    <nav>
+        <ul>
+            <li class="main">
+                <a href="index.html"></a>
+                <div>
+                    <ul>
+                        <li onclick="$(this).toggleClass('active');" class="cmain"><a>首页</a></li>
+                        <li onclick="$(this).toggleClass('active');"  class="cview">
+                        	<a>视图</a>
+                            <div>
+                            	<ul>
+                                	<li><a href="<%=basePath%>resource/setting/geographyViewAction/gotoGeoView">地理视图</a></li>
+                                    <li><a href="<%=basePath%>resource/setting/businessViewAction/getNetTopoView">设备视图</a></li>
+                                    <li><a href="<%=basePath%>resource/setting/businessViewAction/getOutWaterGeoView">业务视图</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li onclick="$(this).toggleClass('active');" class="cevent">
+                        	<a>事件和告警</a>
+                            <div>
+                            	<ul>
+                                	<li><a href="<%=basePath%>alarm/historyAlarmAction/gotoHisAlarm">历史告警</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li onclick="$(this).toggleClass('active');" class="corder">
+                        	<a>工单处理</a>
+                            <div>
+                            	<ul>
+                                	<li><a href="<%=basePath%>order/workOrderAction/getOrderDistribute">工单分发</a></li>
+                                    <li><a href="<%=basePath%>order/workOrderAction/getOrderTrack">工单追踪</a></li>
+                                    <li><a href="<%=basePath%>order/workOrderAction/getHisOrder">历史工单</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li onclick="$(this).toggleClass('active');" class="csetting">
+                        	<a>设置</a>
+                            <div>
+                            	<ul>
+                                	<li><a href="<%=basePath%>resource/organizationSettingAction/getOrganizationSetting">用户管理</a></li>
+                                    <li><a href="<%=basePath%>alarm/alarmSettingAction/getAlarmSetting">告警设置</a></li>
+                                    <li><a href="<%=basePath%>resource/systemSettingAction/getSystemSetting">系统管理</a></li>
+                                    <li><a href="<%=basePath%>view/viewAction/getView">视图管理</a></li>
+                                    <li><a href="<%=basePath%>resource/device/dependDefAction/getDependDef">事件关联</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li onclick="$(this).toggleClass('active');" class="creport">
+                        	<a>事件报表</a>
+                            <div>
+                            	<ul>
+                                	<li><a href="<%=basePath%>report/inspect/inspectHisAction/getInspectHis">巡检报告</a></li>
+                                    <li><a href="<%=basePath%>resource/statistics/operReportAction/gotoOperReport">运维报表</a></li>
+                                    <li><a href="<%=basePath%>resource/statistics/logAction/getLog">日志</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="home"><a href="<%=basePath%>indexAction/home"></a></li>
+            <li class="alarm"><a href="<%=basePath%>alarm/activeAlarmAction/getAllAlarm"><i id="alarmCount">100</i></a></li>
+            <li class="view">
+                <a href="<%=basePath%>resource/setting/businessViewAction/getOutWaterGeoView"></a>
+                <div>
+                    <ul>
+                        <li><a href="<%=basePath%>resource/setting/businessViewAction/getNetTopoView">网络拓扑</a></li>
+                        <li><a href="<%=basePath%>resource/setting/geographyViewAction/gotoGeoView">地理视图</a></li>
+                        <li><a href="<%=basePath%>resource/setting/businessViewAction/getOutWaterGeoView">漏水视图</a></li>
+                        <li><a href="">DashBoard</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="system">
+                <a href=""><span>IT系统</span><i></i></a>
+                <div>
+                    <ul>
+                        <li><a href="<%=basePath%>resource/device/defaultDeviceAction/getAll?deviceClassModel.id=???">服务器</a></li>
+                        <li><a href="">交换机</a></li>
+                        <li><a href="">打印机</a></li>
+                        <li><a href="">投影仪</a></li>
+                        <li><a href="">IP电话</a></li>
+                        <li><a href="">视频会议</a></li>
+                        <li><a href="">路由器</a></li>
+                        <li><a href="">数据库</a></li>
+                        <li><a href="">中间件</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="system">
+                <a href=""><span>环境系统</span><i></i></a>
+                <div>
+                    <ul>
+                        <li><a href="">服务器</a></li>
+                        <li><a href="">交换机</a></li>
+                        <li><a href="">打印机</a></li>
+                        <li><a href="">投影仪</a></li>
+                        <li><a href="">IP电话</a></li>
+                        <li><a href="">视频会议</a></li>
+                        <li><a href="">路由器</a></li>
+                        <li><a href="">数据库</a></li>
+                        <li><a href="">中间件</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="system">
+                <a href=""><span>动力系统</span><i></i></a>
+                <div>
+                    <ul>
+                        <li><a href="">服务器</a></li>
+                        <li><a href="">交换机</a></li>
+                        <li><a href="">打印机</a></li>
+                        <li><a href="">投影仪</a></li>
+                        <li><a href="">IP电话</a></li>
+                        <li><a href="">视频会议</a></li>
+                        <li><a href="">路由器</a></li>
+                        <li><a href="">数据库</a></li>
+                        <li><a href="">中间件</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="system">
+                <a href="">安防系统<i></i></a>
+                <div>
+                    <ul>
+                        <li><a href="">服务器</a></li>
+                        <li><a href="">交换机</a></li>
+                        <li><a href="">打印机</a></li>
+                        <li><a href="">投影仪</a></li>
+                        <li><a href="">IP电话</a></li>
+                        <li><a href="">视频会议</a></li>
+                        <li><a href="">路由器</a></li>
+                        <li><a href="">数据库</a></li>
+                        <li><a href="">中间件</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="more">
+                <a></a>
+                <div>
+                    <ul>
+                        <li><a href="<%=basePath%>self/selfCheckAction/getSelfInfo">系统信息</a></li>
+                        <li><a href="<%=basePath%>indexAction/getUseManual">用户手册</a></li>
+                        <li><a href="<%=basePath%>appstore.jsp">APP下载</a></li>
+                        <li><a>更改账户</a></li>
+                        <li><a href="<%=basePath%>resource/organization/userAction/doLogout">注销登录</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="user"><a><i></i><span>admin</span></a></li>
+        </ul>
+    </nav>
+    </div>
+</header>
+
+<section class="position disable_select">
+	<div class="path">
+    	<ul>
+        	<li><a>设置</a></li>
+            <li><a>视图管理</a></li>
+            <li><a>网络拓扑</a></li>
+            <li>
+            	<a>深圳思博创</a>
+                <div>
+                	<ul>
+                    	<li><a href="">深圳思博创</a></li>
+                        <li><a href="">广隆纸品</a></li>
+                        <li><a href="">阳江核电</a></li>
+                        <li><a href="">中广核电</a></li>
+                        <li><a href="">平安银行</a></li>
+                        <li><a href="">陆总路由器</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="context">
+	<div class="container">
+    	<div class="stage disable_select">
+        	<div>
+            	<div id="stage" class="ui-droppable"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<script src="js/cybertron/net.topoly.view.js"></script>
+</html>
