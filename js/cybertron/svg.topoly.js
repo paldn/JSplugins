@@ -12,7 +12,7 @@
 	Topoly.Stage = function(id)
 	{
 		this.id = id;
-		bound = document.getElementById(id).getBoundingClientRect();
+		var bound = document.getElementById(id).getBoundingClientRect();
 		var width = bound.width;
 		var height = bound.height;
 		this.stage = SVG(id).size("100%","100%").viewbox({ x: 0, y: 0, width: width*2, height: height*2 }).panZoom({zoomMin: 0.1, zoomMax: 20});
@@ -444,42 +444,49 @@
 							}
 						}
 					}
-				}).on("dblclick",function(e)
-				{
-					if(this.context.events["dblclick"])
-					{
-						this.context.events["dblclick"].call(this,e);
-					}
-				}).on("contextmenu",function(e)
-				{
-					if(this.context.events["contextmenu"])
-					{
-						this.context.events["contextmenu"].call(this,e);
-					}
-				}).on("mousedown",function(e)
-				{
-					if(this.context.id == "QWWERRDDFGGHJGUUGHJHFDGHJUUIGHGJJGHFHJGYTSDDT")return false;
-					if(!e.ctrlKey)
-					{
-						var nodes = this.siblings();
-						for(var v=0;v<nodes.length;++v)
-						{
-							nodes[v].context.selected = false;
-							nodes[v].children()[2].children()[0].attr({"opacity":"0"});
-						}
-						
-						var lines = this.parent().previous().children();
-						for(var v=0;v<lines.length;++v)
-						{
-							lines[v].context.selected = false;
-							lines[v].attr({"stroke":"#3c6"});
-						}
-					}
-					this.context.selected = true;
-					this.children()[2].children()[0].attr({"opacity":"0.3"});
-					e.stopPropagation();
 				});
 			}
+			box.on("dblclick",function(e)
+			{
+				if(this.context.events["dblclick"])
+				{
+					this.context.events["dblclick"].call(this,e);
+				}
+			}).on("mouseover",function(e)
+			{
+				if(this.context.events["mouseover"])
+				{
+					this.context.events["mouseover"].call(this,e);
+				}
+			}).on("contextmenu",function(e)
+			{
+				if(this.context.events["contextmenu"])
+				{
+					this.context.events["contextmenu"].call(this,e);
+				}
+			}).on("mousedown",function(e)
+			{
+				if(this.context.id == "QWWERRDDFGGHJGUUGHJHFDGHJUUIGHGJJGHFHJGYTSDDT")return false;
+				if(!e.ctrlKey)
+				{
+					var nodes = this.siblings();
+					for(var v=0;v<nodes.length;++v)
+					{
+						nodes[v].context.selected = false;
+						nodes[v].children()[2].children()[0].attr({"opacity":"0"});
+					}
+					
+					var lines = this.parent().previous().children();
+					for(var v=0;v<lines.length;++v)
+					{
+						lines[v].context.selected = false;
+						lines[v].attr({"stroke":"#3c6"});
+					}
+				}
+				this.context.selected = true;
+				this.children()[2].children()[0].attr({"opacity":"0.3"});
+				e.stopPropagation();
+			});
 			box.context = element;
 			element.node = box;
 			this.allnodes[element.id] = element;

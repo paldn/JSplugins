@@ -47,6 +47,8 @@ var queue = new createjs.LoadQueue();
 /**这些SVG资源需要预先加载，否则不能显示**/
 queue.loadManifest(
 [
+	 {id: "radar", src:"images/cybertron/radar.png"},
+	 
      {id: "access_control", src:"images/cybertron/dev_topo/access_control.svg"},
 	 {id: "air_condition", src:"images/cybertron/dev_topo/air_condition.svg"},
 	 {id: "ats", src:"images/cybertron/dev_topo/ats.svg"},
@@ -88,9 +90,19 @@ function handleComplete()
 				nodes[data[i].id].ports = data[i].ports;
 				stage.add(nodes[data[i].id]);
 				nodes[data[i].id].status = 0;
-				nodes[data[i].id].bind("dblclick",function(e)
+				nodes[data[i].id].bind("mouseover",function(e)
 				{
-					alert("OK");
+					this.parent().parent().parent().element.view_detail(this.context,
+					{
+						"name":"RTHS_01",
+						"health":96,
+						"busi_type":"深圳思博创",
+						"ip_addr":"192.168.10.123",
+						"dev_level":"三级",
+						"geo_addr":"外运大厦1207",
+						"alarm_count":29,
+						"monitor_count":202
+					});
 				});
 			}
 			//初始化连线
